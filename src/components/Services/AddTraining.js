@@ -6,6 +6,9 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import AddIcon from "@mui/icons-material/Add";
+import DateTimePicker from "@mui/lab/DateTimePicker";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
 
 function AddTraining(props) {
   const [open, setOpen] = React.useState(false);
@@ -55,6 +58,22 @@ function AddTraining(props) {
             fullWidth
             variant="standard"
           />
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <DateTimePicker
+              clearable
+              renderInput={(props) => (
+                <TextField
+                  margin="dense"
+                  fullWidth
+                  variant="standard"
+                  {...props}
+                />
+              )}
+              label="Date"
+              value={training.date}
+              onChange={(date) => handleDate(date)}
+            />
+          </LocalizationProvider>
 
           <TextField
             margin="dense"
